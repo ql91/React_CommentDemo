@@ -1,0 +1,146 @@
+body{
+    background-color: none;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, "宋体";
+}
+
+/* 评论整个盒子 */
+#content{
+    width: 600px;
+    height: 260px; /* 300px */ 
+    margin: 10px auto;
+    /*background-color: #DBF3CD;*/
+    background-image: url("bg.jpg");
+    /*border: 20px solid ##A9A9A9;*/
+    /*background-color:rgba(219,243,205,.4); */
+    position: relative;
+}
+
+h3{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.noNameCheck{
+    position: absolute;
+}
+
+/* 评论框 textarea*/
+.comment{
+    resize: none;
+    outline: none;
+    width: 500px;
+    height: 150px;
+    margin: 0 auto;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    text-indent: 4px;
+    font-size: 14px;
+    padding-top: 10px;
+    line-height: 20px;
+}
+
+.authorName{
+    position: absolute;
+    /*font-size: 12px;*/
+    top: 215px;
+    left: 50px;
+}
+
+.authorName input{
+    display: inline-block;
+    outline: none;
+    width: 200px;
+    height: 30px;
+    text-indent: 4px;
+    font-size: 14px;
+}
+
+/* 发布按钮 */
+.btn{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #3098F4;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 50px;
+    top: 215px;
+    font-size: 14px;
+    outline: none;
+}
+
+ul,li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+}
+
+/* 评论列表 */
+.item{
+    height: auto;
+    width: 600px;
+    /*background-image: url("bg.jpg");*/
+    /*background-color: #DBF3CD;*/
+    position: absolute;
+    top: 270px;
+    padding: 10px 0 10px;
+}
+.item li{
+    width: 500px;
+    height: 100px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-top: 5px;
+    /*top: 270px;*/
+    left: 50px;
+    border-bottom: 2px solid #FDAC75;
+    padding-left: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+/* 左边 头像区域*/
+.fl{
+    width: 60px;
+    background-color: none; /* green */
+    float: left;
+}
+.fl img{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+/* 右边 个人信息区域及发表的内容*/
+.fr{
+   display: inline-block;
+   float: right; 
+   margin-right: 50px; 
+}
+
+.fr .msg{
+    width: 380px;
+    height: 80px;
+    background-color: none;
+    font-size: 12px;
+    margin-top: 3px;
+    line-height: 20px;
+}
+
+.name{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.time{
+    font-size: 12px;
+    margin-left: 10px;
+}

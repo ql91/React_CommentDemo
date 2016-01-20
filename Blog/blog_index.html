@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>评论框</title>
+    <script src="../js/vendor/react.js"></script>
+    <script src="../js/vendor/react-dom.js"></script>
+    <script src="../js/vendor/jquery.min.js"></script>
+    <script src="../js/vendor/JSXTransformer.js"></script>
+    <link rel="stylesheet" href="blog_css.css">
+</head>
+<body>
+    <div id="content"></div>
+    <script type="text/jsx">
+        var Box = React.createClass({
+            getInitialState: function(){
+                return {data: []}
+            },
+            loadFromServer: function(){
+                $.ajax({
+                    url: this.props.url,
+                    dataType: "json",
+                    success: function(data){
+                        this.setState({data: data});
+                    }.bind(this),
+                    error: function(){
+                        console.log("出错啦!");
+                    }.bind(this)
+                });
+            },
+            componentDidMount: function(){
+                this.loadFromServer();
+                //setInterval(this.loadFromServer, 3000);
+            },
+            handlerSubmit: function(t){
+                this.state.data.unshift(t);
+                console.log( this.state.data);
+                this.setState({data: this.state.data});
+                return;
+            }, 
+            render: function(){
+                return (
+                    <div>
+                        <h3>Comments</h3>  
+                        <FormBox onFormSubmit={this.handlerSubmit}></FormBox>
+                        <ItemBox data={this.state.data}></ItemBox>
+                    </div>
+                );
+            }
+        });
+
+        var FormBox = React.createClass({
+            handlerFormSubmit: function(e){
+                e.preventDefault();
+                var content = this.refs.comment.value.trim();
+                var commentAuthor = this.refs.commentAuthor.value.trim();
+                 
+                if(!content){
+                    alert("输入的信息不能为空啦~");
+                    return;
+                }
+                if(!commentAuthor){
+                    alert("请填写姓名");
+                    return;
+                }
+
+                var t = new Date();
+                t = t.toLocaleString();
+                var sj = {
+                    "author": commentAuthor,
+                    "text": content,
+                    "avatar": "avatar.png",
+                    "time": t
+                }
+                this.props.onFormSubmit(sj);
+                this.refs.comment.value = "";
+                this.refs.commentAuthor.value = "";
+            },
+            render: function(){
+                return (
+                    <form method="post" className="formBox" onSubmit={this.handlerFormSubmit}>
+                        <textarea name="comment" className="comment" ref="comment"
+                         placeholder="say you want to say..."></textarea>
+                        <lable className="authorName">
+                        <input type="text" placeholder="your name" ref="commentAuthor"/>
+                        </lable>
+                       
+                        <input type="submit" value="发表" className="btn" />
+                    </form>
+                )
+            }
+        });
+
+        var ItemBox = React.createClass({
+            render: function(){
+                var itemInfo = this.props.data.map(function(t){
+                    return (
+                        <li key={t.author}>
+                          <div>
+                             <div className="fl">
+                                 <img src={t.avatar} alt="头像" />
+                             </div>
+                             <div className="fr">
+                                 <span className="name">{t.author}</span>
+                                 <span className="time">{t.time}</span>
+                                 <div  className="msg">
+                                    {t.text}
+                                 </div>
+                             </div>
+                          </div>
+                       </li>
+                    )
+                });
+                return (
+                    <ul className="item">{itemInfo}</ul>
+                )
+            }
+        });
+
+        ReactDOM.render(
+            <Box url="blog_data.json" />,
+            content
+        )
+    </script>
+</body>
+</html>
