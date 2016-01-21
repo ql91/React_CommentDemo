@@ -30,6 +30,7 @@ h3{
 .comment{
     resize: none;
     outline: none;
+    border: none;
     width: 500px;
     height: 150px;
     margin: 0 auto;
@@ -42,6 +43,11 @@ h3{
     line-height: 20px;
 }
 
+.comment:focus{
+    box-shadow: 0 0 2px 2px #FDAC75;
+    border: none;
+}
+
 .authorName{
     position: absolute;
     /*font-size: 12px;*/
@@ -52,10 +58,16 @@ h3{
 .authorName input{
     display: inline-block;
     outline: none;
+    border: none;
     width: 200px;
     height: 30px;
     text-indent: 4px;
     font-size: 14px;
+}
+
+.authorName input:focus{
+    box-shadow: 0 0 2px 2px #FDAC75;
+    border: none;
 }
 
 /* 发布按钮 */
