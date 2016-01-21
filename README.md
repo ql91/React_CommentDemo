@@ -9,17 +9,17 @@
 **[5.组件](#5)**<br/>
 **[6.渲染](#6)**<br/>
 
-##<span id="1">1.需求</span>
+<h2 id="1">1.需求</h2>
 实现这样一个简易的评论框组件
 ![](introImg/comment.gif)
 
-##<span id="2">2.分析</span>
-编写React就是不断构建组件的过程，首先根据需求进行UI的划分：
--Box
-    -FormBox
-    -ItemBox
+<h2 id="2">2.分析</h2>
+编写React就是不断构建组件的过程，首先根据需求进行UI的划分：<br/>
+-Box<br/>
+&nbsp;&nbsp;-FormBox<br/>
+&nbsp;&nbsp;-ItemBox<br/>
 
-##<span id="3">3.编码</span>
+<h2 id="3">3.编码</h2>
 评论框内容的处理采用了数据模拟的方式,并未和服务器交互处理<br/>
 Blog/blog_data.json
 ```javascript
@@ -41,7 +41,7 @@ Blog/blog_data.json
 }]
 ```
 
-##<span id="4">4.页面</span>
+<h2 id="4">4.页面</h2>
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,7 @@ Blog/blog_data.json
 </html>
 ```
 
-##<span id="5">5.组件</span>
+<h2 id="5">5.组件</h2>
 **Box**
 ```js
 var Box = React.createClass({
@@ -175,7 +175,7 @@ var ItemBox = React.createClass({
 });
 ```
 
-##<span id="6">6.渲染</span>
+<h2 id="6">6.渲染</h2>
 ```js
 ReactDOM.render(
     <Box url="blog_data.json" />,
